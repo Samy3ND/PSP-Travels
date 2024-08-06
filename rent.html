@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Rental</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .rental-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            animation: fadeIn 1.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .rental-container h1 {
+            color: #004caa;
+            margin-bottom: 30px;
+        }
+
+        .rental-container select,
+        .rental-container input[type="text"],
+        .rental-container input[type="date"],
+        .rental-container input[type="time"] {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .rental-container button {
+            width: 100%;
+            padding: 15px;
+            background-color: #fc5185;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .rental-container button:hover {
+            background-color: #e04973;
+        }
+
+        .rental-container a {
+            display: block;
+            margin-top: 20px;
+            color: #004caa;
+            text-decoration: none;
+        }
+
+        .rental-container a:hover {
+            text-decoration: underline;
+        }
+
+        .rental-container .input-group {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .rental-container .input-group input {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="rental-container">
+        <h1>Rent a Vehicle</h1>
+        <form action="#">
+            <select required>
+                <option value="" disabled selected>Select Vehicle Type</option>
+                <option value="car">Car</option>
+                <option value="motorcycle">Motorcycle</option>
+                <option value="suv">Scooter</option>
+                
+            </select>
+            <div class="input-group">
+                <input type="text" placeholder="Pickup Location" required>
+                <input type="text" placeholder="Drop-off Location" required>
+            </div>
+            <div class="input-group">
+                <input type="date" placeholder="Pickup Date" required>
+                <input type="time" placeholder="Pickup Time" required>
+            </div>
+            <div class="input-group">
+                <input type="date" placeholder="Drop-off Date" required>
+                <input type="time" placeholder="Drop-off Time" required>
+            </div>
+            <select required>
+                <option value="" disabled selected>Paymant</option>
+                <option value="mob">Fonepay</option>
+                <option value="cash">Cash</option>
+                <option value="bank">Bank Transfer</option>
+            </select>
+            <button type="submit">Rent Now</button>
+            
+            <a href="#">Need Help?</a>
+            <a href="home.html">Back</a>
+            
+
+        </form>
+    </div>
+</body>
+</html>

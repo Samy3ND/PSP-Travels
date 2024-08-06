@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Map of Nepal</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .map-container {
+            width: 80%;
+            height: 80%;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            animation: fadeIn 1.5s ease;
+            position: relative;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .map-container h1 {
+            color: #004caa;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            background-color: white;
+            border-bottom: 2px solid #f0f2f5;
+        }
+
+        #map {
+            width: 100%;
+            height: calc(100% - 60px);
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background-color: #fc5185;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .back-button:hover {
+            background-color: #e04973;
+        }
+    </style>
+</head>
+<body>
+    <div class="map-container">
+        <h1>Some Routes , PSP Travels</h1>
+        <div id="map"></div>
+        <a href="home.html" class="back-button">Back</a>
+    </div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        var map = L.map('map').setView([28.3949, 84.1240], 7);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+        }).addTo(map);
+
+       
+        var cities = {
+            "Kathmandu": [27.7172, 85.3240],
+            "Pokhara": [28.2096, 83.9856],
+            "Chitwan": [27.5291, 84.3542],
+            "Biratnagar": [26.4525, 87.2718],
+            "Nepalgunj": [28.0500, 81.6167],
+            "Bhaktapur": [27.6710, 85.4290],
+            "Lalitpur": [27.6660, 85.3206]
+        };
+
+       
+        for (var city in cities) {
+            L.marker(cities[city]).addTo(map).bindPopup(city);
+        }
+
+        var flightRoutes = [
+            { from: "Kathmandu", to: "Pokhara", color: "#fc5185" },
+            { from: "Kathmandu", to: "Chitwan", color: "#fc5185" },
+            { from: "Kathmandu", to: "Biratnagar", color: "#fc5185" },
+            { from: "Kathmandu", to: "Nepalgunj", color: "#fc5185" },
+            { from: "Pokhara", to: "Chitwan", color: "#fc5185" },
+            { from: "Pokhara", to: "Nepalgunj", color: "#fc5185" },
+            { from: "Biratnagar", to: "Bhaktapur", color: "#fc5185" },
+            { from: "Biratnagar", to: "Lalitpur", color: "#fc5185" },
+            { from: "Nepalgunj", to: "Bhaktapur", color: "#fc5185" },
+            { from: "Nepalgunj", to: "Lalitpur", color: "#fc5185" }
+        ];
+
+        flightRoutes.forEach(route => {
+            var fromCoord = cities[route.from];
+            var toCoord = cities[route.to];
+            var flightPath = L.polyline([fromCoord, toCoord], {
+                color: route.color,
+                weight: 4,
+                opacity: 0.7,
+                dashArray: '10, 10'
+            }).addTo(map).bindPopup(`Flight Route: ${route.from} to ${route.to}`);
+        });
+
+
+        var roadRoutes = [
+            { from: "Kathmandu", to: "Chitwan", color: "#004caa" },
+            { from: "Kathmandu", to: "Biratnagar", color: "#004caa" },
+            { from: "Kathmandu", to: "Pokhara", color: "#004caa" },
+            { from: "Kathmandu", to: "Bhaktapur", color: "#004caa" },
+            { from: "Kathmandu", to: "Lalitpur", color: "#004caa" },
+            { from: "Pokhara", to: "Chitwan", color: "#004caa" },
+            { from: "Biratnagar", to: "Bhaktapur", color: "#004caa" },
+            { from: "Biratnagar", to: "Lalitpur", color: "#004caa" },
+            { from: "Nepalgunj", to: "Bhaktapur", color: "#004caa" },
+            { from: "Nepalgunj", to: "Lalitpur", color: "#004caa" }
+        ];
+
+        roadRoutes.forEach(route => {
+            var fromCoord = cities[route.from];
+            var toCoord = cities[route.to];
+            var roadPath = L.polyline([fromCoord, toCoord], {
+                color: route.color,
+                weight: 4,
+                opacity: 0.7
+            }).addTo(map).bindPopup(`Road Route: ${route.from} to ${route.to}`);
+        });
+    </script>
+</body>
+</html>
