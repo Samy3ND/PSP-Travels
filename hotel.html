@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Booking</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .booking-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            animation: fadeIn 1.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .booking-container h1 {
+            color: #004caa;
+            margin-bottom: 30px;
+        }
+
+        .booking-container select,
+        .booking-container input[type="text"],
+        .booking-container input[type="date"] {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .booking-container button {
+            width: 100%;
+            padding: 15px;
+            background-color: #fc5185;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .booking-container button:hover {
+            background-color: #e04973;
+        }
+
+        .booking-container a {
+            display: block;
+            margin-top: 20px;
+            color: #004caa;
+            text-decoration: none;
+        }
+
+        .booking-container a:hover {
+            text-decoration: underline;
+        }
+
+        .booking-container .input-group {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .booking-container .input-group input {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="booking-container">
+        <h1>Book a Hotel in Nepal</h1>
+        <form action="#">
+            <select required>
+                <option value="" disabled selected>Select City</option>
+                <option value="kathmandu">Kathmandu</option>
+                <option value="pokhara">Pokhara</option>
+                <option value="chitwan">Chitwan</option>
+                <option value="bhaktapur">Bhaktapur</option>
+                <option value="lalitpur">Lalitpur</option>
+            </select>
+            <input type="text" placeholder="Hotel Name">
+            <div class="input-group">
+                <input type="date" placeholder="Check-in Date" required>
+                <input type="date" placeholder="Check-out Date" required>
+            </div>
+            <select required>
+                <option value="" disabled selected>Paymant</option>
+                <option value="mob">Fonepay</option>
+                <option value="cash">Cash</option>
+                <option value="bank">Bank Transfer</option>
+            </select>
+            
+            <button type="submit">Book Now</button>
+            <a href="#">Need Help?</a>
+            <a href="home.html">Back</a>
+        </form>
+    </div>
+</body>
+</html>
